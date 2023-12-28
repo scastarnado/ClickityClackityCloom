@@ -1,0 +1,15 @@
+{
+  "name": "Clickity_Clackity_Cloom",
+  "version": "1.0.0",
+  "description": "Remaster from my previous .NET app",
+  "main": "./js/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "test"
+  },
+  "author": "kstzzz",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^28.0.0"
+  }
+}
