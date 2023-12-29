@@ -16,33 +16,41 @@ h2 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* Style form elements */
-.form-group {
-    margin-bottom: 20px;
+body {
+    margin: 0;
+    padding: 0;
 }
 
-/* Style buttons with rounded corners */
-.btn,
-.btn-group,
-.form-check-input {
-    border-radius: 20px;
+.container-fluid {
+    padding: 20px;
 }
 
-/* Animate buttons */
-.btn-primary,
-.btn-secondary {
-    transition: background-color 0.3s ease-in-out;
+#main-row {
+    margin: 0 -15px;
 }
 
-.btn-primary:hover,
-.btn-secondary:hover {
-    background-color: #1abc9c;
+#left_column {
+    padding-right: 15px;
 }
 
-/* Animate checkbox */
-.form-check-input:checked {
-    transform: scale(1.2);
+.row {
+    margin-bottom: 15px;
 }
+
+label {
+    display: block;
+}
+
+.form-check {
+    margin-top: 10px;
+}
+
+.btn {
+    margin-top: 15px;
+}
+
+
+
 
 .switch {
     font-size: 17px;
