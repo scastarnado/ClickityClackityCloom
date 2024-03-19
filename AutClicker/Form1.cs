@@ -1,4 +1,4 @@
-﻿using Clickity_Clackity_Chucklefinger_3000;
+﻿using ClickityClacityCloom;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,6 +7,8 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,6 +27,15 @@ namespace AutClicker
         #region P/Invoke Declarations
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+        public static extern bool UnhookWindowsHookEx(int idHook);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+        public static extern int CallNextHookEx(int idHook, int nCode, IntPtr wParam, IntPtr lParam);
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+        public static extern IntPtr GetModuleHandle(string lpModuleName);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
         public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint cButtons, uint dwExtraInfo);
 
         [DllImport("user32.dll")]
@@ -40,9 +51,6 @@ namespace AutClicker
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
 
-        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        private static extern IntPtr GetModuleHandle(string lpModuleName);
-
         #endregion
 
         #region Constants
@@ -55,6 +63,9 @@ namespace AutClicker
         private const int MOUSEEVENTF_RIGHTDOWN = 0x08;
         private const int MOUSEEVENTF_RIGHTUP = 0x10;
 
+        private const int WH_MOUSE_LL = 14;
+        private const int WM_LBUTTONDOWN = 0x0201;
+
         #endregion
 
         #region Fields
@@ -64,6 +75,8 @@ namespace AutClicker
         private bool isPlaying;
         private bool isListening = false;
         private IntPtr hookID = IntPtr.Zero;
+        private List<ClickAction> recordedActions = new List<ClickAction>();
+        private bool isRecording = false;
 
         #endregion
 
@@ -88,6 +101,10 @@ namespace AutClicker
 
         public static event PropertyChangedEventHandler PropertyChanged;
 
+        private delegate int HookProc(int nCode, IntPtr wParam, IntPtr lParam);
+        private HookProc mouseHookProcedure;
+        private IntPtr mouseHookID = IntPtr.Zero;
+
         #endregion
 
         #region Constructor
@@ -104,7 +121,22 @@ namespace AutClicker
 
             ClickTypeDropBox.Text = "Single Click";
             ClickTypeDropBox.SelectedText = "Single Click";
+
+            mouseHookProcedure = new HookProc(MouseHookCallback);
         }
+
+        // Set up the mouse hook when the form loads
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            mouseHookID = SetHook(mouseHookProcedure);
+        }
+
+        // Unhook the mouse hook when the form closes
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            UnhookWindowsHookEx(mouseHookID);
+        }
+
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -349,39 +381,33 @@ namespace AutClicker
 
         private IntPtr SetHook(HookProc proc)
         {
-            using (ProcessModule currentModule = Process.GetCurrentProcess().MainModule)
+            using (Process curProcess = Process.GetCurrentProcess())
+            using (ProcessModule curModule = curProcess.MainModule)
             {
-                return SetWindowsHookEx(WH_MOUSE_LL, proc,
-                    GetModuleHandle(currentModule.ModuleName), 0);
+                return SetWindowsHookEx(WH_MOUSE_LL, proc, GetModuleHandle(curModule.ModuleName), 0);
             }
         }
 
-        private delegate IntPtr HookProc(int nCode, IntPtr wParam, IntPtr lParam);
-
-        private IntPtr MouseHookCallback(int nCode, IntPtr wParam, IntPtr lParam)
+        private int MouseHookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
-            if (nCode >= 0 && wParam == (IntPtr)WM_LBUTTONDOWN)
+            if (nCode >= 0 && wParam == (IntPtr)WM_LBUTTONDOWN && isRecording)
             {
-                MSLLHOOKSTRUCT hookStruct = Marshal.PtrToStructure<MSLLHOOKSTRUCT>(lParam);
-                int x = hookStruct.pt.x;
-                int y = hookStruct.pt.y;
+                // Get mouse coordinates
+                MSLLHOOKSTRUCT hookStruct = (MSLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(MSLLHOOKSTRUCT));
 
-
-                // Set the values on the corresponding fields
-                XMouseLocation.Value = x; YMouseLocation.Value = y;
-
-                isListening = false;
-                PickLocationBTN.Text = "Start Listening";
-
-                UnhookWindowsHookEx(hookID); // Unhook the mouse hook
+                // Record the click action
+                recordedActions.Add(new ClickAction
+                {
+                    X = hookStruct.pt.x,
+                    Y = hookStruct.pt.y,
+                    Interval = 0 // You can add a delay if needed
+                });
             }
-            return CallNextHookEx(hookID, nCode, wParam, lParam);
+
+            return CallNextHookEx(0, nCode, wParam, lParam);
         }
 
         #region P/Invoke Declarations for mouse hook
-
-        private const int WH_MOUSE_LL = 14;
-        private const int WM_LBUTTONDOWN = 0x0201;
 
         [StructLayout(LayoutKind.Sequential)]
         private struct POINT
@@ -405,96 +431,64 @@ namespace AutClicker
 
         #region Recording macros
 
-        // Define a class to store click information
-        private class ClickInfo
-        {
-            public int X { get; set; } // This is used to know where to click
-            public int Y { get; set; } // This is used to know where to click
-            public long Interval { get; set; } // This is used to know when to click
-        }
-
-        private class RecordingInfo
-        {
-            public string RecordName { get; set; }
-            public ClickInfo ClickInfo { get; set; }
-        }
-
-        private List<ClickInfo> clickInfoList = new List<ClickInfo>();
-        private Stopwatch stopwatch = new Stopwatch();
 
         private void RecordBTN_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("RECORD");
-            if (stopwatch.IsRunning)
+            if (!isRecording)
             {
-                stopwatch.Stop();
-                RecordBTN.Text = "Record";
-                Console.WriteLine("Saving?");
-                // Save the recorded info
-                SaveClickInfo();
-
-                // Unhook the mouse hook when recording stops
-                UnhookWindowsHookEx(hookID);
+                // Start recording
+                recordedActions.Clear();
+                isRecording = true;
+                RecordBTN.Text = "Stop Recording";
             }
             else
             {
-                clickInfoList.Clear();
-                stopwatch.Reset();
-                stopwatch.Start();
-                RecordBTN.Text = "Stop Recording";
-                Console.WriteLine("Started to record");
-                // Set up the mouse hook when recording starts
-                hookID = SetHook(RecordMouseHookCallback);
+                // Stop recording
+                isRecording = false;
+                RecordBTN.Text = "Record";
+
+                // Prompt user to save recorded macro
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Macro Files|*.macro";
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string fileName = saveFileDialog.FileName;
+                    SaveMacro(fileName);
+                }
             }
         }
 
-        private void SaveClickInfo()
+        private void SaveMacro(string fileName)
         {
             // Prompt user for a name
             Console.Write("Enter a name for the record: ");
-            FormSaveRecord formSaveRecord = new FormSaveRecord();
-            formSaveRecord.ShowDialog();
-
-            // Serialize the list of ClickInfo to JSON
-            string json = JsonConvert.SerializeObject(clickInfoList, Newtonsoft.Json.Formatting.Indented);
-
-            // Save the JSON to a file
-            File.WriteAllText("C:\\Users\\Sergi Castarnado\\Desktop\\Records.json", json);
-        }
-
-        private IntPtr RecordMouseHookCallback(int nCode, IntPtr wParam, IntPtr lParam)
-        {
-            const int WM_LBUTTONDOWN = 0x0201;
-            const int WM_RBUTTONDOWN = 0x0204;
-
-            if (nCode >= 0 && (wParam.ToInt32() == WM_LBUTTONDOWN || wParam.ToInt32() == WM_RBUTTONDOWN))
+            // FormSaveRecord formSaveRecord = new FormSaveRecord();
+            // formSaveRecord.ShowDialog();
+            try
             {
-                MSLLHOOKSTRUCT hookStruct = (MSLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(MSLLHOOKSTRUCT));
-
-                // Calculate the interval since the last click
-                long interval = stopwatch.ElapsedMilliseconds;
-
-                // Create a new ClickInfo object
-                ClickInfo clickInfo = new ClickInfo
+                using (FileStream fs = new FileStream(fileName, FileMode.Create))
                 {
-                    X = hookStruct.pt.x,
-                    Y = hookStruct.pt.y,
-                    Interval = interval
-                };
-
-                // Add the ClickInfo to the list
-                clickInfoList.Add(clickInfo);
-
-                // Restart the stopwatch for the next click
-                stopwatch.Restart();
+                    IFormatter formatter = new BinaryFormatter();
+                    formatter.Serialize(fs, recordedActions);
+                }
             }
-
-            return CallNextHookEx(hookID, nCode, wParam, lParam);
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving macro: " + ex.Message);
+            }
         }
-
-
-
 
         #endregion
     }
+
+
+    // Define a class to store click information
+    [Serializable]
+    public class ClickAction
+    {
+        public int X { get; set; } // This is used to know where to click
+        public int Y { get; set; } // This is used to know where to click
+        public long Interval { get; set; } // This is used to know when to click
+    }
+
 }

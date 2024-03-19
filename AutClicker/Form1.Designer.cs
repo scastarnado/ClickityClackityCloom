@@ -581,7 +581,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "AppWindow";
-            this.Text = "Clickity-Clackity Chucklefinger 3000";
+            this.Text = "Clickity Clacity Cloom";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MilisecondsValue)).EndInit();

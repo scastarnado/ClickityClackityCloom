@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Clickity_Clackity_Chucklefinger_3000.Properties {
+namespace ClickityClakityCloom.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Clickity_Clackity_Chucklefinger_3000.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Clickity_Clackity_Chucklefinger_3000.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ClickityClakityCloom.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClickityClackity", "AutClicker\ClickityClackity.csproj", "{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClickityClackityCloom", "AutClicker\ClickityClackityCloom.csproj", "{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

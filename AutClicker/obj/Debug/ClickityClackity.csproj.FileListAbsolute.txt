@@ -1,0 +1,10 @@
+C:\Users\scastarnado\Desktop\ClickityClackityCloom\ClickityClackityCloom\AutClicker\obj\Debug\ClickityClackity.csproj.AssemblyReference.cache
+C:\Users\scastarnado\Desktop\ClickityClackityCloom\ClickityClackityCloom\AutClicker\obj\Debug\AutClicker.AppWindow.resources
+C:\Users\scastarnado\Desktop\ClickityClackityCloom\ClickityClackityCloom\AutClicker\obj\Debug\ClickityClacityCloom.FormSaveRecord.resources
+C:\Users\scastarnado\Desktop\ClickityClackityCloom\ClickityClackityCloom\AutClicker\obj\Debug\Clickity_Clackity_Chucklefinger_3000.Properties.Resources.resources
+C:\Users\scastarnado\Desktop\ClickityClackityCloom\ClickityClackityCloom\AutClicker\obj\Debug\AutClicker.AppWindow.en-GB.resources
+C:\Users\scastarnado\Desktop\ClickityClackityCloom\ClickityClackityCloom\AutClicker\obj\Debug\ClickityClackity.csproj.GenerateResource.cache
+C:\Users\scastarnado\Desktop\ClickityClackityCloom\ClickityClackityCloom\AutClicker\obj\Debug\ClickityClackity.csproj.CoreCompileInputs.cache
+C:\Users\scastarnado\Desktop\ClickityClackityCloom\ClickityClackityCloom\AutClicker\obj\Debug\en-GB\Clickity_Clackity_Chucklefinger_3000.resources.dll
+C:\Users\scastarnado\Desktop\ClickityClackityCloom\ClickityClackityCloom\AutClicker\obj\Debug\Clickity_Clackity_Chucklefinger_3000.exe
+C:\Users\scastarnado\Desktop\ClickityClackityCloom\ClickityClackityCloom\AutClicker\obj\Debug\Clickity_Clackity_Chucklefinger_3000.pdb

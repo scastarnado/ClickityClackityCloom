@@ -19,3 +19,13 @@ E:\uni\DesktopSoftwares\SCast_AutoClicker\AutClicker\AutClicker\obj\Release\Clic
 E:\uni\DesktopSoftwares\SCast_AutoClicker\AutClicker\AutClicker\obj\Release\ClickityClackity.csproj.CopyComplete
 E:\uni\DesktopSoftwares\SCast_AutoClicker\AutClicker\AutClicker\obj\Release\Clickity_Clackity_Chucklefinger_3000.exe
 E:\uni\DesktopSoftwares\SCast_AutoClicker\AutClicker\AutClicker\obj\Release\Clickity_Clackity_Chucklefinger_3000.pdb
+C:\Users\scastarnado\Desktop\ClickityClackityCloom\ClickityClackityCloom\AutClicker\obj\Release\ClickityClackity.csproj.AssemblyReference.cache
+C:\Users\scastarnado\Desktop\ClickityClackityCloom\ClickityClackityCloom\AutClicker\obj\Release\AutClicker.AppWindow.resources
+C:\Users\scastarnado\Desktop\ClickityClackityCloom\ClickityClackityCloom\AutClicker\obj\Release\ClickityClacityCloom.FormSaveRecord.resources
+C:\Users\scastarnado\Desktop\ClickityClackityCloom\ClickityClackityCloom\AutClicker\obj\Release\Clickity_Clackity_Chucklefinger_3000.Properties.Resources.resources
+C:\Users\scastarnado\Desktop\ClickityClackityCloom\ClickityClackityCloom\AutClicker\obj\Release\AutClicker.AppWindow.en-GB.resources
+C:\Users\scastarnado\Desktop\ClickityClackityCloom\ClickityClackityCloom\AutClicker\obj\Release\ClickityClackity.csproj.GenerateResource.cache
+C:\Users\scastarnado\Desktop\ClickityClackityCloom\ClickityClackityCloom\AutClicker\obj\Release\ClickityClackity.csproj.CoreCompileInputs.cache
+C:\Users\scastarnado\Desktop\ClickityClackityCloom\ClickityClackityCloom\AutClicker\obj\Release\en-GB\Clickity_Clackity_Chucklefinger_3000.resources.dll
+C:\Users\scastarnado\Desktop\ClickityClackityCloom\ClickityClackityCloom\AutClicker\obj\Release\Clickity_Clackity_Chucklefinger_3000.exe
+C:\Users\scastarnado\Desktop\ClickityClackityCloom\ClickityClackityCloom\AutClicker\obj\Release\Clickity_Clackity_Chucklefinger_3000.pdb
