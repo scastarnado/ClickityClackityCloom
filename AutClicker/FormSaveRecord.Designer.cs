@@ -1,4 +1,4 @@
-﻿namespace Clickity_Clackity_Chucklefinger_3000
+﻿namespace ClickityClacityCloom
 {
     partial class FormSaveRecord
     {
@@ -67,6 +67,7 @@
             this.CancelRecordBTN.TabIndex = 3;
             this.CancelRecordBTN.Text = "CANCEL";
             this.CancelRecordBTN.UseVisualStyleBackColor = true;
+            this.CancelRecordBTN.Click += new System.EventHandler(this.CancelRecordBTN_Click);
             // 
             // FormSaveRecord
             // 

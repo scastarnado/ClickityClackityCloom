@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Clickity_Clackity_Chucklefinger_3000</RootNamespace>
-    <AssemblyName>Clickity_Clackity_Chucklefinger_3000</AssemblyName>
+    <RootNamespace>ClickityClakityCloom</RootNamespace>
+    <AssemblyName>ClickityClakityCloom</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -58,7 +58,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
