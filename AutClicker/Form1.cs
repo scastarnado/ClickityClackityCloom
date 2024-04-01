@@ -205,7 +205,7 @@ namespace AutClicker
             else if (RepeatTimesRadioBTN.Checked)
             {
                 iterations = (int)RepeatTimesValue.Value;
-                TimeIntervalMilliseconds = (int)(MilisecondsValue.Value + (SecondsValue.Value * 1000) + (MinutesValue.Value * 60000) + (HoursValue.Value * 3600000) / iterations);
+                TimeIntervalMilliseconds = (int)((MilisecondsValue.Value + (SecondsValue.Value * 1000) + (MinutesValue.Value * 60000) + (HoursValue.Value * 3600000)) / iterations);
             }
 
             // Handling 0 ms interval
@@ -293,8 +293,8 @@ namespace AutClicker
 
                 if (hasToStop) IsPlaying = false;
             }
-
         }
+
         public static void ThreadTilMinutes(int iterations)
         {
             for (int i = 0; i < iterations; i++)
@@ -428,9 +428,7 @@ namespace AutClicker
 
         #endregion
 
-
         #region Recording macros
-
 
         private void RecordBTN_Click(object sender, EventArgs e)
         {
@@ -462,8 +460,6 @@ namespace AutClicker
         {
             // Prompt user for a name
             Console.Write("Enter a name for the record: ");
-            // FormSaveRecord formSaveRecord = new FormSaveRecord();
-            // formSaveRecord.ShowDialog();
             try
             {
                 using (FileStream fs = new FileStream(fileName, FileMode.Create))

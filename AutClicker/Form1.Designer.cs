@@ -121,6 +121,11 @@
             // MilisecondsValue
             // 
             this.MilisecondsValue.Location = new System.Drawing.Point(385, 60);
+            this.MilisecondsValue.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             this.MilisecondsValue.Name = "MilisecondsValue";
             this.MilisecondsValue.Size = new System.Drawing.Size(120, 20);
             this.MilisecondsValue.TabIndex = 10;
@@ -133,6 +138,11 @@
             // SecondsValue
             // 
             this.SecondsValue.Location = new System.Drawing.Point(259, 60);
+            this.SecondsValue.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             this.SecondsValue.Name = "SecondsValue";
             this.SecondsValue.Size = new System.Drawing.Size(120, 20);
             this.SecondsValue.TabIndex = 9;
@@ -140,6 +150,11 @@
             // MinutesValue
             // 
             this.MinutesValue.Location = new System.Drawing.Point(132, 60);
+            this.MinutesValue.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             this.MinutesValue.Name = "MinutesValue";
             this.MinutesValue.Size = new System.Drawing.Size(120, 20);
             this.MinutesValue.TabIndex = 8;
@@ -147,6 +162,11 @@
             // HoursValue
             // 
             this.HoursValue.Location = new System.Drawing.Point(6, 60);
+            this.HoursValue.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             this.HoursValue.Name = "HoursValue";
             this.HoursValue.Size = new System.Drawing.Size(120, 20);
             this.HoursValue.TabIndex = 2;
