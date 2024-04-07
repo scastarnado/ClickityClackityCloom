@@ -1,0 +1,78 @@
+# Visual Studio / JetBrains Rider / VS Code / Sublime Text
+.vscode/
+.idea/
+*.suo
+*.sln.docstates
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+*.cache
+*.bak
+*.backup
+*.log
+*.dll
+*.log
+*.pdb
+*.userprefs
+*.vspscc
+*.vspolicy
+*.vspx
+*.psess
+*.ps1xml
+*.cache
+*.vs/ # Visual Studio Code
+.vs
+**/.vscode
+.vscode
+**/node_modules
+*.dotSettings
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Tt]est[Rr]esult*/
+_nuxt/
+dist/
+.cache/
+.nuxt/
+build/
+**/dist
+**/dist-ssr
+# Packer
+[Oo]ut/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+bin/
+obj/
+
+# Visual Studio 2019
+.vs2019/
+
+# Rider
+.idea/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
