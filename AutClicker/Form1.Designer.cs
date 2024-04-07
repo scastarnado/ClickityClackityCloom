@@ -126,6 +126,11 @@
             0,
             0,
             0});
+            this.MilisecondsValue.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.MilisecondsValue.Name = "MilisecondsValue";
             this.MilisecondsValue.Size = new System.Drawing.Size(120, 20);
             this.MilisecondsValue.TabIndex = 10;
@@ -529,7 +534,7 @@
             this.PlayStopLabel.Size = new System.Drawing.Size(143, 25);
             this.PlayStopLabel.TabIndex = 17;
             this.PlayStopLabel.Text = " IS STOPPED";
-            this.PlayStopLabel.TextChanged += new System.EventHandler(this.PlayStopLabel_TextChanged);
+            //this.PlayStopLabel.TextChanged += new System.EventHandler(this.PlayStopLabel_TextChanged);
             // 
             // label17
             // 
@@ -602,6 +607,7 @@
             this.MaximizeBox = false;
             this.Name = "AppWindow";
             this.Text = "Clickity Clacity Cloom";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AppClosed);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MilisecondsValue)).EndInit();
