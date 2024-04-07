@@ -1,5 +1,4 @@
-﻿using ClickityClacityCloom;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,24 +6,17 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-// TODO
-// - Repeat X minutes -> ME DA MUCHA PEREZA ESTA COSA
-// - Double click and Left Click
-// - New Ideas??
-// - Key bindings
-// - Grabación de clicks / macros -> NO TENGO NI IDEA DE COMO EMPEZAR LMAO
 
 namespace AutClicker
 {
     public partial class AppWindow : Form
     {
-        #region P/Invoke Declarations
+        #region DLL imports
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
         public static extern bool UnhookWindowsHookEx(int idHook);
@@ -122,7 +114,7 @@ namespace AutClicker
             ClickTypeDropBox.Text = "Single Click";
             ClickTypeDropBox.SelectedText = "Single Click";
 
-            mouseHookProcedure = new HookProc(MouseHookCallback);
+            //mouseHookProcedure = new HookProc(MouseHookCallback);
         }
 
         // Set up the mouse hook when the form loads
@@ -175,7 +167,6 @@ namespace AutClicker
 
         public void ChangeTextStartStop(bool isPlaying)
         {
-
             // Use Invoke to update the UI on the main thread
             if (InvokeRequired)
             {
@@ -348,6 +339,7 @@ namespace AutClicker
             // Handle Variable Click Position Checkbox
             if (VariableClickPositionCheck.Checked)
             {
+                // MessageBox.Show("Do this work?"); // it does
                 int VariablePixels = (int)VariableClickPositionValue.Value;
                 int randomX = rand.Next(-VariablePixels, VariablePixels);
                 int randomY = rand.Next(-VariablePixels, VariablePixels);
@@ -360,23 +352,22 @@ namespace AutClicker
             return MousePosition;
         }
 
-        private async void PlayStopLabel_TextChanged(object sender, EventArgs e)
+        private async void PickLocationBTN_Click(object sender, EventArgs e)
         {
-            if (IsPlaying)
-            {
-                await DoClicks(); // Ejecutar DoClicks() en un subproceso separado
-            }
-        }
-
-        private void PickLocationBTN_Click(object sender, EventArgs e)
-        {
+        
             if (!isListening)
             {
                 isListening = true;
                 PickLocationBTN.Text = "Listening...";
-
                 hookID = SetHook(MouseHookCallback);
             }
+            else
+            {
+                isListening = false;
+                PickLocationBTN.Text = "Pick Location";
+                UnhookWindowsHookEx(hookID);
+            }
+        
         }
 
         private IntPtr SetHook(HookProc proc)
@@ -390,22 +381,24 @@ namespace AutClicker
 
         private int MouseHookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
-            if (nCode >= 0 && wParam == (IntPtr)WM_LBUTTONDOWN && isRecording)
+            if (nCode >= 0 && wParam == (IntPtr)WM_LBUTTONDOWN)
             {
-                // Get mouse coordinates
                 MSLLHOOKSTRUCT hookStruct = (MSLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(MSLLHOOKSTRUCT));
+                int x = hookStruct.pt.x;
+                int y = hookStruct.pt.y;
 
-                // Record the click action
-                recordedActions.Add(new ClickAction
-                {
-                    X = hookStruct.pt.x,
-                    Y = hookStruct.pt.y,
-                    Interval = 0 // You can add a delay if needed
-                });
+                XMouseLocation.Value = x;
+                YMouseLocation.Value = y;
+
+                // Unhook the mouse hook after one click
+                UnhookWindowsHookEx(hookID);
+                isListening = false;
+                // Optionally, you can change the button text here
+                PickLocationBTN.Invoke((MethodInvoker)(() => PickLocationBTN.Text = "Pick Location"));
             }
-
-            return CallNextHookEx(0, nCode, wParam, lParam);
+            return (int)CallNextHookEx(hookID, nCode, wParam, lParam);
         }
+
 
         #region P/Invoke Declarations for mouse hook
 
@@ -475,6 +468,15 @@ namespace AutClicker
         }
 
         #endregion
+
+        private void AppClosed(object sender, FormClosedEventArgs e)
+        {
+            if (isListening)
+            {
+                UnhookWindowsHookEx(hookID);
+            }
+
+        }
     }
 
 
@@ -486,5 +488,4 @@ namespace AutClicker
         public int Y { get; set; } // This is used to know where to click
         public long Interval { get; set; } // This is used to know when to click
     }
-
 }
