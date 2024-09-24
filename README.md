@@ -32,8 +32,4 @@ Contributions are welcome, but remember to keep the absurdity level high! Submit
 
 Use the ClickityClackityCloom software responsibly. We are not responsible for any uncontrollable laughter, chaos, or chicken-related incidents that may ensue.
 
-## License
-
-This software is licensed under the "LOLPL" (Laugh Out Loud Public License). See the [LICENSE](LICENSE) file for details.
-
 Get ready to click your way to hilarity with the ClickityClackityCloom! When life gets boring, just add more absurdity. 😜🐔💥
