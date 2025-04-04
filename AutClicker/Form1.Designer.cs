@@ -71,9 +71,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.StartStopWorker = new System.ComponentModel.BackgroundWorker();
             this.label18 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.RecordBTN = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MilisecondsValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SecondsValue)).BeginInit();
@@ -529,17 +526,16 @@
             this.PlayStopLabel.AutoSize = true;
             this.PlayStopLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayStopLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.PlayStopLabel.Location = new System.Drawing.Point(407, 347);
+            this.PlayStopLabel.Location = new System.Drawing.Point(363, 336);
             this.PlayStopLabel.Name = "PlayStopLabel";
             this.PlayStopLabel.Size = new System.Drawing.Size(143, 25);
             this.PlayStopLabel.TabIndex = 17;
             this.PlayStopLabel.Text = " IS STOPPED";
-            //this.PlayStopLabel.TextChanged += new System.EventHandler(this.PlayStopLabel_TextChanged);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(451, 380);
+            this.label17.Location = new System.Drawing.Point(393, 369);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(92, 13);
             this.label17.TabIndex = 18;
@@ -552,48 +548,16 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(458, 403);
+            this.label18.Location = new System.Drawing.Point(393, 386);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(85, 13);
             this.label18.TabIndex = 19;
             this.label18.Text = "Use F7 to STOP";
             // 
-            // button1
-            // 
-            this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(326, 380);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 36);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Change Hotkeys";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // RecordBTN
-            // 
-            this.RecordBTN.Location = new System.Drawing.Point(326, 347);
-            this.RecordBTN.Name = "RecordBTN";
-            this.RecordBTN.Size = new System.Drawing.Size(75, 23);
-            this.RecordBTN.TabIndex = 21;
-            this.RecordBTN.Text = "Record";
-            this.RecordBTN.UseVisualStyleBackColor = true;
-            this.RecordBTN.Click += new System.EventHandler(this.RecordBTN_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(313, 331);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(102, 13);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "Under Development";
-            // 
             // AppWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(559, 430);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.RecordBTN);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.PlayStopLabel);
@@ -676,9 +640,6 @@
         private System.ComponentModel.BackgroundWorker StartStopWorker;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label ListeningLabel;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button RecordBTN;
-        private System.Windows.Forms.Label label9;
     }
 }
 
