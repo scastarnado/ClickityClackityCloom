@@ -430,13 +430,13 @@ namespace AutClicker
                 // Start recording
                 recordedActions.Clear();
                 isRecording = true;
-                RecordBTN.Text = "Stop Recording";
+                //RecordBTN.Text = "Stop Recording";
             }
             else
             {
                 // Stop recording
                 isRecording = false;
-                RecordBTN.Text = "Record";
+                //RecordBTN.Text = "Record";
 
                 // Prompt user to save recorded macro
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
