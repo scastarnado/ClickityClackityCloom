@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.MacroNameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SaveRecordBTN = new System.Windows.Forms.Button();
             this.CancelRecordBTN = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // MacroNameTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(336, 20);
-            this.textBox1.TabIndex = 0;
+            this.MacroNameTextBox.Location = new System.Drawing.Point(12, 25);
+            this.MacroNameTextBox.Name = "MacroNameTextBox";
+            this.MacroNameTextBox.Size = new System.Drawing.Size(336, 20);
+            this.MacroNameTextBox.TabIndex = 0;
             // 
             // label1
             // 
@@ -58,6 +58,7 @@
             this.SaveRecordBTN.TabIndex = 2;
             this.SaveRecordBTN.Text = "SAVE";
             this.SaveRecordBTN.UseVisualStyleBackColor = true;
+            this.SaveRecordBTN.Click += new System.EventHandler(this.SaveRecordBTN_Click);
             // 
             // CancelRecordBTN
             // 
@@ -77,7 +78,7 @@
             this.Controls.Add(this.CancelRecordBTN);
             this.Controls.Add(this.SaveRecordBTN);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.MacroNameTextBox);
             this.Name = "FormSaveRecord";
             this.Text = "FormSaveRecord";
             this.ResumeLayout(false);
@@ -87,7 +88,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox MacroNameTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button SaveRecordBTN;
         private System.Windows.Forms.Button CancelRecordBTN;

@@ -71,6 +71,8 @@
             this.label17 = new System.Windows.Forms.Label();
             this.StartStopWorker = new System.ComponentModel.BackgroundWorker();
             this.label18 = new System.Windows.Forms.Label();
+            this.RecordBTN = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MilisecondsValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SecondsValue)).BeginInit();
@@ -281,7 +283,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(140, 31);
+            this.label7.Location = new System.Drawing.Point(153, 31);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 15;
@@ -312,7 +314,7 @@
             // 
             // RepeatTimesValue
             // 
-            this.RepeatTimesValue.Location = new System.Drawing.Point(73, 27);
+            this.RepeatTimesValue.Location = new System.Drawing.Point(86, 27);
             this.RepeatTimesValue.Name = "RepeatTimesValue";
             this.RepeatTimesValue.Size = new System.Drawing.Size(61, 20);
             this.RepeatTimesValue.TabIndex = 11;
@@ -422,7 +424,7 @@
             this.groupBox5.Controls.Add(this.CurrentLocationRadioBTN);
             this.groupBox5.Location = new System.Drawing.Point(12, 316);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(295, 100);
+            this.groupBox5.Size = new System.Drawing.Size(281, 100);
             this.groupBox5.TabIndex = 15;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Cursor Position";
@@ -430,7 +432,7 @@
             // ListeningLabel
             // 
             this.ListeningLabel.AutoSize = true;
-            this.ListeningLabel.Location = new System.Drawing.Point(109, 41);
+            this.ListeningLabel.Location = new System.Drawing.Point(109, 37);
             this.ListeningLabel.Name = "ListeningLabel";
             this.ListeningLabel.Size = new System.Drawing.Size(74, 13);
             this.ListeningLabel.TabIndex = 23;
@@ -439,7 +441,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(256, 78);
+            this.label13.Location = new System.Drawing.Point(256, 81);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(14, 13);
             this.label13.TabIndex = 22;
@@ -465,7 +467,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(256, 57);
+            this.label12.Location = new System.Drawing.Point(256, 60);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(14, 13);
             this.label12.TabIndex = 20;
@@ -473,9 +475,9 @@
             // 
             // PickLocationBTN
             // 
-            this.PickLocationBTN.Location = new System.Drawing.Point(107, 57);
+            this.PickLocationBTN.Location = new System.Drawing.Point(107, 53);
             this.PickLocationBTN.Name = "PickLocationBTN";
-            this.PickLocationBTN.Size = new System.Drawing.Size(76, 35);
+            this.PickLocationBTN.Size = new System.Drawing.Size(76, 43);
             this.PickLocationBTN.TabIndex = 17;
             this.PickLocationBTN.Text = "Pick Location";
             this.PickLocationBTN.UseVisualStyleBackColor = true;
@@ -526,7 +528,7 @@
             this.PlayStopLabel.AutoSize = true;
             this.PlayStopLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayStopLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.PlayStopLabel.Location = new System.Drawing.Point(363, 336);
+            this.PlayStopLabel.Location = new System.Drawing.Point(407, 341);
             this.PlayStopLabel.Name = "PlayStopLabel";
             this.PlayStopLabel.Size = new System.Drawing.Size(143, 25);
             this.PlayStopLabel.TabIndex = 17;
@@ -535,7 +537,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(393, 369);
+            this.label17.Location = new System.Drawing.Point(444, 376);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(92, 13);
             this.label17.TabIndex = 18;
@@ -548,16 +550,38 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(393, 386);
+            this.label18.Location = new System.Drawing.Point(444, 393);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(85, 13);
             this.label18.TabIndex = 19;
             this.label18.Text = "Use F7 to STOP";
             // 
+            // RecordBTN
+            // 
+            this.RecordBTN.Location = new System.Drawing.Point(299, 326);
+            this.RecordBTN.Name = "RecordBTN";
+            this.RecordBTN.Size = new System.Drawing.Size(75, 34);
+            this.RecordBTN.TabIndex = 20;
+            this.RecordBTN.Text = "Record Macro";
+            this.RecordBTN.UseVisualStyleBackColor = true;
+            this.RecordBTN.Click += new System.EventHandler(this.RecordBTN_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(299, 381);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 34);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "Manage Macros";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.ManageMacrosBTN_Click);
+            // 
             // AppWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(559, 430);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.RecordBTN);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.PlayStopLabel);
@@ -571,7 +595,6 @@
             this.MaximizeBox = false;
             this.Name = "AppWindow";
             this.Text = "Clickity Clacity Cloom";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AppClosed);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MilisecondsValue)).EndInit();
@@ -640,6 +663,8 @@
         private System.ComponentModel.BackgroundWorker StartStopWorker;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label ListeningLabel;
+        private System.Windows.Forms.Button RecordBTN;
+        private System.Windows.Forms.Button button1;
     }
 }
 

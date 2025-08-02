@@ -7,14 +7,14 @@
     <framework targetVersion="4.8" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="ClickityClakityCloom.exe.manifest" size="4893">
+    <dependentAssembly dependencyType="install" codebase="ClickityClakityCloom.exe.manifest" size="4965">
       <assemblyIdentity name="ClickityClakityCloom.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>rKADXMODYvry2ScBMZXwTPcIvEX4rVxeRXbJzYtGOm8=</dsig:DigestValue>
+        <dsig:DigestValue>O2x8hiQHMGFiivGcLLre9IzKvN7EFIIi9MAO8SaDy2s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

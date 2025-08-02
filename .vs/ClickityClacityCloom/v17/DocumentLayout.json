@@ -1,44 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\",
+  "WorkspaceRootPath": "C:\\Users\\sergi\\source\\repos\\scastarnado\\ClickityClackityCloom\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\autclicker\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|solutionrelative:autclicker\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\autclicker\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|solutionrelative:autclicker\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|ClickityClackityCloom||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\autclicker\\formsaverecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|solutionrelative:autclicker\\formsaverecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|c:\\users\\cpc001\\source\\repos\\scastarnado\\clickityclackitycloom\\autclicker\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|C:\\Users\\sergi\\source\\repos\\scastarnado\\ClickityClackityCloom\\autclicker\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|solutionrelative:autclicker\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackity.csproj|C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackity.csproj|solutionrelative:AutClicker\\Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|C:\\Users\\sergi\\source\\repos\\scastarnado\\ClickityClackityCloom\\autclicker\\formsaverecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|solutionrelative:autclicker\\formsaverecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\autclicker\\formsaverecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|c:\\users\\sergi\\source\\repos\\scastarnado\\clickityclackitycloom\\autclicker\\formmacromanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|solutionrelative:autclicker\\formmacromanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|C:\\Users\\sergi\\source\\repos\\scastarnado\\ClickityClackityCloom\\autclicker\\formsaverecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|solutionrelative:autclicker\\formsaverecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\autclicker\\formsaverecord.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|solutionrelative:autclicker\\formsaverecord.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|c:\\users\\sergi\\source\\repos\\scastarnado\\clickityclackitycloom\\autclicker\\formmacromanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|solutionrelative:autclicker\\formmacromanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackity.csproj|C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackity.csproj|solutionrelative:AutClicker\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|c:\\users\\sergi\\source\\repos\\scastarnado\\clickityclackitycloom\\autclicker\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|solutionrelative:autclicker\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|c:\\users\\cpc001\\source\\repos\\scastarnado\\clickityclackitycloom\\autclicker\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|f8d6553f-f752-4dbf-acb6-f291b744a792"
+      "AbsoluteMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|c:\\users\\sergi\\source\\repos\\scastarnado\\clickityclackitycloom\\autclicker\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackityCloom.csproj|solutionrelative:autclicker\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackity.csproj|C:\\Users\\sergi\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DF62DB99-1FBC-4421-85F3-BEA0AF9A2ED2}|AutClicker\\ClickityClackity.csproj|solutionrelative:AutClicker\\Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -55,110 +49,102 @@
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Form1.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\Form1.Designer.cs",
-              "RelativeDocumentMoniker": "AutClicker\\Form1.Designer.cs",
-              "ToolTip": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\Form1.Designer.cs",
-              "RelativeToolTip": "AutClicker\\Form1.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-07T19:09:18.537Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\Form1.cs",
-              "RelativeDocumentMoniker": "AutClicker\\Form1.cs",
-              "ToolTip": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\Form1.cs [Design]",
-              "RelativeToolTip": "AutClicker\\Form1.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-24T21:51:10.165Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\Form1.cs",
               "RelativeDocumentMoniker": "AutClicker\\Form1.cs",
-              "ToolTip": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\Form1.cs",
+              "ToolTip": "C:\\Users\\sergi\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\Form1.cs",
               "RelativeToolTip": "AutClicker\\Form1.cs",
-              "ViewState": "AgIAAC8BAAAAAAAAAAAswD8BAAANAAAAAAAAAA==",
+              "ViewState": "AgIAALsBAAAAzczMzMwUwM0BAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-24T21:51:10.631Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FormMacroManager.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\FormMacroManager.cs",
+              "RelativeDocumentMoniker": "AutClicker\\FormMacroManager.cs",
+              "ToolTip": "C:\\Users\\sergi\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\FormMacroManager.cs",
+              "RelativeToolTip": "AutClicker\\FormMacroManager.cs",
+              "ViewState": "AgIAAAgAAAAATjMzMzMLwBcAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-02T20:27:42.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "FormSaveRecord.cs",
-              "DocumentMoniker": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\FormSaveRecord.cs",
+              "Title": "FormSaveRecord.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\sergi\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\FormSaveRecord.cs",
               "RelativeDocumentMoniker": "AutClicker\\FormSaveRecord.cs",
-              "ToolTip": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\FormSaveRecord.cs",
+              "ToolTip": "C:\\Users\\sergi\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\FormSaveRecord.cs [Dise\u00F1o]",
+              "RelativeToolTip": "AutClicker\\FormSaveRecord.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-24T21:51:10.284Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FormSaveRecord.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\FormSaveRecord.cs",
+              "RelativeDocumentMoniker": "AutClicker\\FormSaveRecord.cs",
+              "ToolTip": "C:\\Users\\sergi\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\FormSaveRecord.cs",
               "RelativeToolTip": "AutClicker\\FormSaveRecord.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAADAAAAAAewCEAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-24T21:51:10.277Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ClickityClackityCloom",
-              "DocumentMoniker": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\ClickityClackityCloom.csproj",
-              "RelativeDocumentMoniker": "AutClicker\\ClickityClackityCloom.csproj",
-              "ToolTip": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\ClickityClackityCloom.csproj",
-              "RelativeToolTip": "AutClicker\\ClickityClackityCloom.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-15T10:59:18.604Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "FormSaveRecord.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\FormSaveRecord.cs",
-              "RelativeDocumentMoniker": "AutClicker\\FormSaveRecord.cs",
-              "ToolTip": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\FormSaveRecord.cs [Design]",
-              "RelativeToolTip": "AutClicker\\FormSaveRecord.cs [Design]",
+              "DocumentIndex": 4,
+              "Title": "FormMacroManager.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\sergi\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\FormMacroManager.cs",
+              "RelativeDocumentMoniker": "AutClicker\\FormMacroManager.cs",
+              "ToolTip": "C:\\Users\\sergi\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\FormMacroManager.cs [Dise\u00F1o]",
+              "RelativeToolTip": "AutClicker\\FormMacroManager.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-24T21:51:10.284Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "FormSaveRecord.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\FormSaveRecord.Designer.cs",
-              "RelativeDocumentMoniker": "AutClicker\\FormSaveRecord.Designer.cs",
-              "ToolTip": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\FormSaveRecord.Designer.cs",
-              "RelativeToolTip": "AutClicker\\FormSaveRecord.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-24T21:51:10.286Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\Program.cs",
-              "RelativeDocumentMoniker": "AutClicker\\Program.cs",
-              "ToolTip": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\Program.cs",
-              "RelativeToolTip": "AutClicker\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-24T21:51:10.936Z"
+              "WhenOpened": "2025-08-02T20:30:15.531Z",
+              "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Form1.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\Form1.cs",
+              "RelativeDocumentMoniker": "AutClicker\\Form1.cs",
+              "ToolTip": "C:\\Users\\sergi\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "AutClicker\\Form1.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-24T21:51:10.165Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "AutClicker\\Form1.Designer.cs",
+              "ToolTip": "C:\\Users\\sergi\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\Form1.Designer.cs",
+              "RelativeToolTip": "AutClicker\\Form1.Designer.cs",
+              "ViewState": "AgIAAEMCAAAAAAAAAAAowFUCAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-02T20:12:41.676Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\sergi\\source\\repos\\scastarnado\\ClickityClackityCloom\\AutClicker\\Form1.cs",
               "RelativeDocumentMoniker": "AutClicker\\Form1.cs",
               "ToolTip": "C:\\Users\\scastarnado\\Desktop\\ClickityClackityCloom\\ClickityClackityCloom\\AutClicker\\Form1.cs [Dise\u00F1o]",
               "RelativeToolTip": "..\\..\\..\\..\\..\\scastarnado\\Desktop\\ClickityClackityCloom\\ClickityClackityCloom\\AutClicker\\Form1.cs [Dise\u00F1o]",

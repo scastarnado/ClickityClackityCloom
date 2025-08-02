@@ -354,7 +354,7 @@ namespace AutClicker
 
         private async void PickLocationBTN_Click(object sender, EventArgs e)
         {
-        
+
             if (!isListening)
             {
                 isListening = true;
@@ -367,7 +367,7 @@ namespace AutClicker
                 PickLocationBTN.Text = "Pick Location";
                 UnhookWindowsHookEx(hookID);
             }
-        
+
         }
 
         private IntPtr SetHook(HookProc proc)
@@ -423,43 +423,128 @@ namespace AutClicker
 
         #region Recording macros
 
+        private DateTime lastActionTime;
+        private IntPtr recordingHookID = IntPtr.Zero;
+
         private void RecordBTN_Click(object sender, EventArgs e)
         {
             if (!isRecording)
             {
-                // Start recording
+                // Iniciar grabación
                 recordedActions.Clear();
                 isRecording = true;
-                //RecordBTN.Text = "Stop Recording";
+                lastActionTime = DateTime.Now;
+                RecordBTN.Text = "Stop Recording";
+
+                // Instalar hook para capturar clics
+                recordingHookID = SetHook(RecordingMouseHookCallback);
             }
             else
             {
-                // Stop recording
+                // Detener grabación
                 isRecording = false;
-                //RecordBTN.Text = "Record";
+                RecordBTN.Text = "Record Macro";
+                RecordBTN.BackColor = SystemColors.Control;
 
-                // Prompt user to save recorded macro
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "Macro Files|*.macro";
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                // Remover hook
+                if (recordingHookID != IntPtr.Zero)
                 {
-                    string fileName = saveFileDialog.FileName;
-                    SaveMacro(fileName);
+                    UnhookWindowsHookEx(recordingHookID);
+                    recordingHookID = IntPtr.Zero;
+                }
+
+                if (recordedActions.Count > 0)
+                {
+                    // Mostrar formulario para guardar
+                    using (var saveForm = new ClickityClacityCloom.FormSaveRecord())
+                    {
+                        // Open the dialog itself
+                        saveForm.ShowDialog();
+
+                        // If the variable SaveConfirmed is true
+                        if (saveForm.SaveConfirmed)
+                        {
+                            SaveMacro(saveForm.MacroName);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No actions were saved.");
                 }
             }
         }
 
-        private void SaveMacro(string fileName)
+        private int RecordingMouseHookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
-            // Prompt user for a name
-            Console.Write("Enter a name for the record: ");
+            if (nCode >= 0 && isRecording)
+            {
+                if (wParam == (IntPtr)WM_LBUTTONDOWN)
+                {
+                    MSLLHOOKSTRUCT hookStruct = (MSLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(MSLLHOOKSTRUCT));
+
+                    DateTime currentTime = DateTime.Now;
+                    long interval = (long)(currentTime - lastActionTime).TotalMilliseconds;
+
+                    var action = new ClickAction
+                    {
+                        X = hookStruct.pt.x,
+                        Y = hookStruct.pt.y,
+                        Interval = recordedActions.Count == 0 ? 0 : interval, // Primera acción sin delay
+                        MouseButton = "Left",
+                        ClickType = "Single Click",
+                        Timestamp = currentTime
+                    };
+
+                    recordedActions.Add(action);
+                    lastActionTime = currentTime;
+
+                    // Mostrar información en consola o log
+                    Console.WriteLine($"Grabado: ({action.X}, {action.Y}) - Intervalo: {action.Interval}ms");
+                }
+            }
+
+            return (int)CallNextHookEx(recordingHookID, nCode, wParam, lParam);
+        }
+
+        private void SaveMacro(string macroName)
+        {
             try
             {
-                using (FileStream fs = new FileStream(fileName, FileMode.Create))
+                // Crear directorio de macros si no existe
+                string macrosDirectory = Path.Combine(Application.StartupPath, "Macros");
+                if (!Directory.Exists(macrosDirectory))
                 {
-                    IFormatter formatter = new BinaryFormatter();
-                    formatter.Serialize(fs, recordedActions);
+                    Directory.CreateDirectory(macrosDirectory);
                 }
+
+                string fileName = Path.Combine(macrosDirectory, $"{macroName}.json");
+
+                MessageBox.Show("It reaches with filename: " + fileName);
+                // Verificar si ya existe
+                if (File.Exists(fileName))
+                {
+                    DialogResult result = MessageBox.Show(
+                        $"Already exists a macro with the name '{macroName}'. Do you want to overwrite it?",
+                        "Existing macro",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+
+                    if (result == DialogResult.No) return;
+                }
+
+                var macroData = new
+                {
+                    Name = macroName,
+                    CreatedDate = DateTime.Now,
+                    Actions = recordedActions
+                };
+
+
+                string json = JsonConvert.SerializeObject(macroData, Formatting.Indented);
+                File.WriteAllText(fileName, json);
+
+                MessageBox.Show($"Macro '{macroName}' saved successfuly {recordedActions.Count} clicks.");
             }
             catch (Exception ex)
             {
@@ -469,23 +554,188 @@ namespace AutClicker
 
         #endregion
 
-        private void AppClosed(object sender, FormClosedEventArgs e)
+        #region Load and Play Macros
+
+        private void LoadMacroBTN_Click(object sender, EventArgs e)
         {
-            if (isListening)
+            using (var macroManager = new FormMacroManager())
             {
-                UnhookWindowsHookEx(hookID);
+                if (macroManager.ShowDialog() == DialogResult.OK && macroManager.Action == "Load")
+                {
+                    LoadMacro(macroManager.SelectedMacro.FilePath);
+                }
+            }
+        }
+
+        private void LoadMacro(string fileName)
+        {
+            try
+            {
+                string json = File.ReadAllText(fileName);
+                dynamic macroData = JsonConvert.DeserializeObject(json);
+
+                recordedActions.Clear();
+                foreach (var action in macroData.Actions)
+                {
+                    recordedActions.Add(new ClickAction
+                    {
+                        X = action.X,
+                        Y = action.Y,
+                        Interval = action.Interval,
+                        MouseButton = action.MouseButton ?? "Left",
+                        ClickType = action.ClickType ?? "Single Click",
+                        Timestamp = action.Timestamp
+                    });
+                }
+
+                MessageBox.Show($"Macro '{macroData.Name}' cargada con {recordedActions.Count} acciones.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error cargando macro: " + ex.Message);
+            }
+        }
+
+        private async void PlayMacroBTN_Click(object sender, EventArgs e)
+        {
+            if (recordedActions.Count == 0)
+            {
+                MessageBox.Show("No hay macro cargada para reproducir.");
+                return;
             }
 
+            await PlayRecordedMacro();
         }
+
+        private async Task PlayRecordedMacro()
+        {
+            foreach (var action in recordedActions)
+            {
+                // Esperar el intervalo antes de la acción
+                if (action.Interval > 0)
+                {
+                    await Task.Delay((int)action.Interval);
+                }
+
+                // Establecer posición del cursor
+                Cursor.Position = new Point(action.X, action.Y);
+
+                // Obtener códigos del botón del mouse
+                uint[] mouseButtonCodes = GetMouseButtonCodes(action.MouseButton);
+
+                // Simular clic
+                mouse_event(mouseButtonCodes[0], (uint)action.X, (uint)action.Y, 0, 0);
+                await Task.Delay(50); // Pequeño delay entre down/up
+                mouse_event(mouseButtonCodes[1], (uint)action.X, (uint)action.Y, 0, 0);
+
+                // Si hay que parar, salir del bucle
+                if (hasToStop)
+                {
+                    break;
+                }
+            }
+        }
+
+        private uint[] GetMouseButtonCodes(string mouseButton)
+        {
+            uint[] codes = new uint[2];
+
+            switch (mouseButton)
+            {
+                case "Left":
+                    codes[0] = MOUSEEVENTF_LEFTDOWN;
+                    codes[1] = MOUSEEVENTF_LEFTUP;
+                    break;
+                case "Right":
+                    codes[0] = MOUSEEVENTF_RIGHTDOWN;
+                    codes[1] = MOUSEEVENTF_RIGHTUP;
+                    break;
+                case "Middle":
+                    codes[0] = MOUSEEVENTF_MIDDLEDOWN;
+                    codes[1] = MOUSEEVENTF_MIDDLEUP;
+                    break;
+                default:
+                    codes[0] = MOUSEEVENTF_LEFTDOWN;
+                    codes[1] = MOUSEEVENTF_LEFTUP;
+                    break;
+            }
+
+            return codes;
+        }
+
+        #endregion
+
+        #region Macro Management
+
+        private void ManageMacrosBTN_Click(object sender, EventArgs e)
+        {
+            using (var macroManager = new FormMacroManager())
+            {
+                if (macroManager.ShowDialog() == DialogResult.OK)
+                {
+                    switch (macroManager.Action)
+                    {
+                        case "Load":
+                            LoadMacro(macroManager.SelectedMacro.FilePath);
+                            break;
+                        case "Edit":
+                            EditMacro(macroManager.SelectedMacro);
+                            break;
+                    }
+                }
+            }
+        }
+
+        private void EditMacro(MacroInfo macroInfo)
+        {
+            try
+            {
+                // Cargar la macro actual
+                string json = File.ReadAllText(macroInfo.FilePath);
+                dynamic macroData = JsonConvert.DeserializeObject(json);
+
+                // Mostrar formulario para editar el nombre
+                using (var editForm = new ClickityClacityCloom.FormSaveRecord())
+                {
+                    editForm.Text = "Editar Macro";
+                    editForm.SetMacroName(macroInfo.Name);
+
+                    if (editForm.ShowDialog() == DialogResult.OK && editForm.SaveConfirmed)
+                    {
+                        // Actualizar el nombre en los datos
+                        var updatedMacroData = new
+                        {
+                            Name = editForm.MacroName,
+                            CreatedDate = macroData.CreatedDate,
+                            ModifiedDate = DateTime.Now,
+                            Actions = macroData.Actions
+                        };
+
+                        // Guardar los cambios
+                        string updatedJson = JsonConvert.SerializeObject(updatedMacroData, Formatting.Indented);
+                        File.WriteAllText(macroInfo.FilePath, updatedJson);
+
+                        MessageBox.Show($"Macro actualizada exitosamente a '{editForm.MacroName}'.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error editando macro: {ex.Message}");
+            }
+        }
+
+        #endregion
     }
 
-
-    // Define a class to store click information
     [Serializable]
     public class ClickAction
     {
-        public int X { get; set; } // This is used to know where to click
-        public int Y { get; set; } // This is used to know where to click
-        public long Interval { get; set; } // This is used to know when to click
+        public int X { get; set; }
+        public int Y { get; set; }
+        public long Interval { get; set; } // Intervalo desde la acción anterior en milisegundos
+        public string MouseButton { get; set; } // "Left", "Right", "Middle"
+        public string ClickType { get; set; } // "Single Click", "Double Click"
+        public DateTime Timestamp { get; set; } // Para calcular intervalos
     }
 }
