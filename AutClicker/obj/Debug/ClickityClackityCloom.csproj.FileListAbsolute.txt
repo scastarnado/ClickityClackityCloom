@@ -104,3 +104,4 @@ C:\Users\sergi\source\repos\scastarnado\ClickityClackityCloom\AutClicker\obj\Deb
 C:\Users\sergi\source\repos\scastarnado\ClickityClackityCloom\AutClicker\obj\Debug\Clickity.0555EADD.Up2Date
 C:\Users\sergi\source\repos\scastarnado\ClickityClackityCloom\AutClicker\obj\Debug\ClickityClakityCloom.exe
 C:\Users\sergi\source\repos\scastarnado\ClickityClackityCloom\AutClicker\obj\Debug\ClickityClakityCloom.pdb
+C:\Users\sergi\source\repos\scastarnado\ClickityClackityCloom\AutClicker\obj\Debug\AutClicker.FormMacroManager.resources

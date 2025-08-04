@@ -114,7 +114,21 @@ namespace AutClicker
             ClickTypeDropBox.Text = "Single Click";
             ClickTypeDropBox.SelectedText = "Single Click";
 
-            //mouseHookProcedure = new HookProc(MouseHookCallback);
+            PopulateMacrosListSelector();
+        }
+
+        private void PopulateMacrosListSelector()
+        {
+            string macrosDirectory = Path.Combine(Application.StartupPath, "Macros");
+            if (Directory.Exists(macrosDirectory))
+            {
+                string[] macroFiles = Directory.GetFiles(macrosDirectory, "*.json");
+                foreach (string file in macroFiles)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(file);
+                    MacrosListSelector.Items.Add(fileName);
+                }
+            }
         }
 
         // Set up the mouse hook when the form loads
@@ -172,14 +186,14 @@ namespace AutClicker
             {
                 Invoke(new Action(() =>
                 {
-                    if (isPlaying) PlayStopLabel.Text = "IS PLAYING";
-                    else PlayStopLabel.Text = "IS STOPPED";
+                    if (isPlaying) PlayStopLabel.Text = "Playing";
+                    else PlayStopLabel.Text = "Stopped";
                 }));
             }
             else
             {
-                if (isPlaying) PlayStopLabel.Text = "IS PLAYING";
-                else PlayStopLabel.Text = "IS STOPPED";
+                if (isPlaying) PlayStopLabel.Text = "Playing";
+                else PlayStopLabel.Text = "Stopped";
             }
         }
 
@@ -286,15 +300,6 @@ namespace AutClicker
             }
         }
 
-        public static void ThreadTilMinutes(int iterations)
-        {
-            for (int i = 0; i < iterations; i++)
-            {
-                Thread.Sleep(60000);
-            }
-            hasToStop = true;
-        }
-
         uint[] MouseButtonToClick()
         {
             // I created an array of 2 values so I can store both actions that will be played
@@ -352,7 +357,7 @@ namespace AutClicker
             return MousePosition;
         }
 
-        private async void PickLocationBTN_Click(object sender, EventArgs e)
+        private void PickLocationBTN_Click(object sender, EventArgs e)
         {
 
             if (!isListening)
@@ -498,9 +503,6 @@ namespace AutClicker
 
                     recordedActions.Add(action);
                     lastActionTime = currentTime;
-
-                    // Mostrar información en consola o log
-                    Console.WriteLine($"Grabado: ({action.X}, {action.Y}) - Intervalo: {action.Interval}ms");
                 }
             }
 
@@ -533,6 +535,10 @@ namespace AutClicker
                     if (result == DialogResult.No) return;
                 }
 
+                // This method record the last click, when the user wants to stop recording
+                // make sure the last action is deleted
+                recordedActions.RemoveAt(recordedActions.Count - 1);
+
                 var macroData = new
                 {
                     Name = macroName,
@@ -544,7 +550,7 @@ namespace AutClicker
                 string json = JsonConvert.SerializeObject(macroData, Formatting.Indented);
                 File.WriteAllText(fileName, json);
 
-                MessageBox.Show($"Macro '{macroName}' saved successfuly {recordedActions.Count} clicks.");
+                MessageBox.Show($"Macro '{macroName}' saved successfully {recordedActions.Count} clicks.");
             }
             catch (Exception ex)
             {
@@ -556,24 +562,13 @@ namespace AutClicker
 
         #region Load and Play Macros
 
-        private void LoadMacroBTN_Click(object sender, EventArgs e)
-        {
-            using (var macroManager = new FormMacroManager())
-            {
-                if (macroManager.ShowDialog() == DialogResult.OK && macroManager.Action == "Load")
-                {
-                    LoadMacro(macroManager.SelectedMacro.FilePath);
-                }
-            }
-        }
-
         private void LoadMacro(string fileName)
         {
             try
             {
-                string json = File.ReadAllText(fileName);
+                string pathToFile = Path.Combine(Application.StartupPath, "Macros", fileName);
+                string json = File.ReadAllText(pathToFile);
                 dynamic macroData = JsonConvert.DeserializeObject(json);
-
                 recordedActions.Clear();
                 foreach (var action in macroData.Actions)
                 {
@@ -588,22 +583,22 @@ namespace AutClicker
                     });
                 }
 
-                MessageBox.Show($"Macro '{macroData.Name}' cargada con {recordedActions.Count} acciones.");
+                MessageBox.Show($"Macro '{macroData.Name}' imported");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error cargando macro: " + ex.Message);
+                MessageBox.Show("Error loading macro: " + ex.Message);
             }
         }
 
         private async void PlayMacroBTN_Click(object sender, EventArgs e)
         {
+            LoadMacro(MacrosListSelector.SelectedItem.ToString() + ".json");
             if (recordedActions.Count == 0)
             {
-                MessageBox.Show("No hay macro cargada para reproducir.");
+                MessageBox.Show("No macro to play");
                 return;
             }
-
             await PlayRecordedMacro();
         }
 
@@ -697,7 +692,7 @@ namespace AutClicker
                 // Mostrar formulario para editar el nombre
                 using (var editForm = new ClickityClacityCloom.FormSaveRecord())
                 {
-                    editForm.Text = "Editar Macro";
+                    editForm.Text = "Edit Macro";
                     editForm.SetMacroName(macroInfo.Name);
 
                     if (editForm.ShowDialog() == DialogResult.OK && editForm.SaveConfirmed)
@@ -715,17 +710,22 @@ namespace AutClicker
                         string updatedJson = JsonConvert.SerializeObject(updatedMacroData, Formatting.Indented);
                         File.WriteAllText(macroInfo.FilePath, updatedJson);
 
-                        MessageBox.Show($"Macro actualizada exitosamente a '{editForm.MacroName}'.");
+                        MessageBox.Show($"Macro updated successfully: '{editForm.MacroName}'");
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error editando macro: {ex.Message}");
+                MessageBox.Show($"Error editing macro: {ex.Message}");
             }
         }
 
         #endregion
+
+        private void ReloadMacroSelectorBTN_Click(object sender, EventArgs e)
+        {
+            PopulateMacrosListSelector();
+        }
     }
 
     [Serializable]

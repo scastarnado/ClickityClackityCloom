@@ -25,7 +25,7 @@ namespace ClickityClacityCloom
         {
             if (string.IsNullOrWhiteSpace(MacroNameTextBox.Text))
             {
-                MessageBox.Show("Por favor, ingresa un nombre para la macro.", "Nombre requerido",
+                MessageBox.Show("Please, set a name to the macro.", "Name required",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
