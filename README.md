@@ -2,13 +2,13 @@
 
 [Absurd Autoclicker]
 
-Welcome to the ClickityClackityCloom repository! 🤪
+Welcome to the ClickityClackityCloom repository!
 
 ## Overview
 
 The ClickityClackityCloom is an autoclicker like no other (joking). It's designed for those who want to inject some absurdity into their mundane tasks (it's just an autoclicker, do not expect a nasa rocket here).
 
-Little alert: You may see a popup saying that this is a sus software. This is because i do not know how to fix it and the program is not from an official publusher or something like this. Do not worry at all my fellas. Just open it. I do not even have any servers to send data, and I do not know how to do that lmao!!
+Little alert: You may see a popup saying that this is a sus software. This is because i do not know how to fix it and the program is not from an official publisher or something like this. Do not worry at all my fellas. Just open it. I do not even have any servers to send data, and I do not know how to do that lmao!!
 
 
 ## Features
@@ -19,10 +19,10 @@ Little alert: You may see a popup saying that this is a sus software. This is be
 
 ## Getting Started (Not fully developed sorry)
 
-1. Clone this repository.
-2. Activate your inner clown.
-3. Run the `ClickityClackityCloom.exe` file.
-4. Watch the magic unfold!
+1. Get to the releases page on the right side.
+2. Download the last release.
+3. Run the `ClickityClackityCloom.exe` file previously downloaded.
+4. Watch the magic unfold, and cast your clicks!
 
 ## Contributions
 
@@ -30,6 +30,6 @@ Contributions are welcome, but remember to keep the absurdity level high! Submit
 
 ## Disclaimer
 
-Use the ClickityClackityCloom software responsibly. We are not responsible for any uncontrollable laughter, chaos, or chicken-related incidents that may ensue.
+Use the ClickityClackityCloom software responsibly. I am not responsible at all for any uncontrollable laughter, chaos, or chicken-related incidents that may ensue.
 
-Get ready to click your way to hilarity with the ClickityClackityCloom! When life gets boring, just add more absurdity. 😜🐔💥
+Get ready to click your way to hilarity with the ClickityClackityCloom!
