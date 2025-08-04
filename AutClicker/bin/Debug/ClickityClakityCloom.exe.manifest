@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ClickityClakityCloom.exe" size="52736">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ClickityClakityCloom.exe" size="54784">
       <assemblyIdentity name="ClickityClakityCloom" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>/TPqkZA/Hj98pkNCMq/6gR46t7Y7m6A1g6fCLMJuVMg=</dsig:DigestValue>
+        <dsig:DigestValue>La1zGeHtLhBJbL7gLnQPJnXZP/N4+OiOyBokcdwPQj8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -61,7 +61,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>kMh8n52D3CyHiM7rh0ubXEmuwNlJAVlv7FnuWSAvDik=</dsig:DigestValue>
+        <dsig:DigestValue>2RrmPVZYVVVXbyZykorcPU/sErhs2Hp261VdKwN2qbw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

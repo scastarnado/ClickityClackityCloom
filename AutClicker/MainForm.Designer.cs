@@ -73,6 +73,9 @@
             this.label18 = new System.Windows.Forms.Label();
             this.RecordBTN = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.MacrosListSelector = new System.Windows.Forms.ComboBox();
+            this.PlayMacroBTN = new System.Windows.Forms.Button();
+            this.ReloadMacroSelectorBTN = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MilisecondsValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SecondsValue)).BeginInit();
@@ -526,18 +529,18 @@
             // PlayStopLabel
             // 
             this.PlayStopLabel.AutoSize = true;
-            this.PlayStopLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlayStopLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.PlayStopLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.PlayStopLabel.Location = new System.Drawing.Point(407, 341);
+            this.PlayStopLabel.Location = new System.Drawing.Point(442, 313);
             this.PlayStopLabel.Name = "PlayStopLabel";
-            this.PlayStopLabel.Size = new System.Drawing.Size(143, 25);
+            this.PlayStopLabel.Size = new System.Drawing.Size(108, 20);
             this.PlayStopLabel.TabIndex = 17;
             this.PlayStopLabel.Text = " IS STOPPED";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(444, 376);
+            this.label17.Location = new System.Drawing.Point(455, 337);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(92, 13);
             this.label17.TabIndex = 18;
@@ -550,7 +553,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(444, 393);
+            this.label18.Location = new System.Drawing.Point(462, 358);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(85, 13);
             this.label18.TabIndex = 19;
@@ -558,9 +561,9 @@
             // 
             // RecordBTN
             // 
-            this.RecordBTN.Location = new System.Drawing.Point(299, 326);
+            this.RecordBTN.Location = new System.Drawing.Point(380, 379);
             this.RecordBTN.Name = "RecordBTN";
-            this.RecordBTN.Size = new System.Drawing.Size(75, 34);
+            this.RecordBTN.Size = new System.Drawing.Size(75, 36);
             this.RecordBTN.TabIndex = 20;
             this.RecordBTN.Text = "Record Macro";
             this.RecordBTN.UseVisualStyleBackColor = true;
@@ -568,18 +571,49 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(299, 381);
+            this.button1.Location = new System.Drawing.Point(299, 379);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 34);
+            this.button1.Size = new System.Drawing.Size(75, 37);
             this.button1.TabIndex = 21;
             this.button1.Text = "Manage Macros";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.ManageMacrosBTN_Click);
             // 
+            // MacrosListSelector
+            // 
+            this.MacrosListSelector.FormattingEnabled = true;
+            this.MacrosListSelector.Location = new System.Drawing.Point(299, 322);
+            this.MacrosListSelector.Name = "MacrosListSelector";
+            this.MacrosListSelector.Size = new System.Drawing.Size(121, 21);
+            this.MacrosListSelector.TabIndex = 22;
+            // 
+            // PlayMacroBTN
+            // 
+            this.PlayMacroBTN.Location = new System.Drawing.Point(299, 348);
+            this.PlayMacroBTN.Name = "PlayMacroBTN";
+            this.PlayMacroBTN.Size = new System.Drawing.Size(92, 23);
+            this.PlayMacroBTN.TabIndex = 23;
+            this.PlayMacroBTN.Text = "Play Macro";
+            this.PlayMacroBTN.UseVisualStyleBackColor = true;
+            this.PlayMacroBTN.Click += new System.EventHandler(this.PlayMacroBTN_Click);
+            // 
+            // ReloadMacroSelectorBTN
+            // 
+            this.ReloadMacroSelectorBTN.Location = new System.Drawing.Point(397, 349);
+            this.ReloadMacroSelectorBTN.Name = "ReloadMacroSelectorBTN";
+            this.ReloadMacroSelectorBTN.Size = new System.Drawing.Size(23, 23);
+            this.ReloadMacroSelectorBTN.TabIndex = 24;
+            this.ReloadMacroSelectorBTN.Text = "⟳";
+            this.ReloadMacroSelectorBTN.UseVisualStyleBackColor = true;
+            this.ReloadMacroSelectorBTN.Click += new System.EventHandler(this.ReloadMacroSelectorBTN_Click);
+            // 
             // AppWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(559, 430);
+            this.Controls.Add(this.ReloadMacroSelectorBTN);
+            this.Controls.Add(this.PlayMacroBTN);
+            this.Controls.Add(this.MacrosListSelector);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.RecordBTN);
             this.Controls.Add(this.label18);
@@ -665,6 +699,9 @@
         private System.Windows.Forms.Label ListeningLabel;
         private System.Windows.Forms.Button RecordBTN;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox MacrosListSelector;
+        private System.Windows.Forms.Button PlayMacroBTN;
+        private System.Windows.Forms.Button ReloadMacroSelectorBTN;
     }
 }
 
