@@ -1,3 +1,5 @@
+<img width="549" height="451" alt="image" src="https://github.com/user-attachments/assets/1e7ac67c-0bde-4d93-83d5-87d750b9c7e5" />
+
 # ClickityClackityCloom
 
 [Absurd Autoclicker]
