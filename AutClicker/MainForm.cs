@@ -404,7 +404,6 @@ namespace AutClicker
             return (int)CallNextHookEx(hookID, nCode, wParam, lParam);
         }
 
-
         #region P/Invoke Declarations for mouse hook
 
         [StructLayout(LayoutKind.Sequential)]
