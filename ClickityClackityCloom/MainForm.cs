@@ -5,12 +5,14 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClickityClacityCloom;
 
 namespace AutClicker
 {
@@ -69,6 +71,10 @@ namespace AutClicker
         private IntPtr hookID = IntPtr.Zero;
         private List<ClickAction> recordedActions = new List<ClickAction>();
         private bool isRecording = false;
+        private bool isMacroPlaying = false;
+        private CancellationTokenSource macroPlaybackCancellation;
+        private KeyBindingConfiguration keyBindings;
+        private string keyBindingsFilePath;
 
         #endregion
 
@@ -105,6 +111,20 @@ namespace AutClicker
         {
             InitializeComponent();
             IsPlaying = false;
+
+            // Load keybindings
+            keyBindingsFilePath = Path.Combine(Application.StartupPath, "Config", "keybindings.json");
+            try
+            {
+                keyBindings = KeyBindingConfiguration.Load(keyBindingsFilePath);
+                UpdateKeybindingLabels();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading keybindings: {ex.Message}\n\nUsing default keybindings.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                keyBindings = KeyBindingConfiguration.CreateDefault();
+            }
+
             StartStopWorker.RunWorkerAsync();
 
             // Set the combobox default text
@@ -119,6 +139,7 @@ namespace AutClicker
 
         private void PopulateMacrosListSelector()
         {
+            MacrosListSelector.Items.Clear();
             string macrosDirectory = Path.Combine(Application.StartupPath, "Macros");
             if (Directory.Exists(macrosDirectory))
             {
@@ -166,16 +187,73 @@ namespace AutClicker
         {
             while (true)
             {
-                if (GetAsyncKeyState(Keys.F6) < 0)
+                try
                 {
-                    IsPlaying = true;
-                }
+                    if (keyBindings != null)
+                    {
+                        // Emergency stop
+                        var emergencyKey = keyBindings.GetKeyForAction("EmergencyStop");
+                        if (emergencyKey != Keys.None && GetAsyncKeyState(emergencyKey) < 0)
+                        {
+                            await Task.Delay(200); // Debounce
+                            IsPlaying = false;
+                            if (isMacroPlaying)
+                            {
+                                StopMacroPlayback();
+                            }
+                            await Task.Delay(200);
+                        }
 
-                else if (GetAsyncKeyState(Keys.F7) < 0)
-                {
-                    IsPlaying = false;
+                        // Start/Stop clicking
+                        var startKey = keyBindings.GetKeyForAction("StartClicking");
+                        var stopKey = keyBindings.GetKeyForAction("StopClicking");
+
+                        if (startKey != Keys.None && GetAsyncKeyState(startKey) < 0 && !isPlaying)
+                        {
+                            await Task.Delay(200);
+                            IsPlaying = true;
+                            await Task.Delay(200);
+                        }
+                        else if (stopKey != Keys.None && GetAsyncKeyState(stopKey) < 0 && isPlaying)
+                        {
+                            await Task.Delay(200);
+                            IsPlaying = false;
+                            await Task.Delay(200);
+                        }
+
+                        // Start macro playback
+                        var startMacroKey = keyBindings.GetKeyForAction("StartMacro");
+                        if (startMacroKey != Keys.None && GetAsyncKeyState(startMacroKey) < 0 && !isMacroPlaying)
+                        {
+                            await Task.Delay(200);
+                            if (InvokeRequired)
+                            {
+                                Invoke(new Action(async () => await StartMacroPlayback()));
+                            }
+                            else
+                            {
+                                await StartMacroPlayback();
+                            }
+                            await Task.Delay(200);
+                        }
+
+                        // Stop macro playback
+                        var stopMacroKey = keyBindings.GetKeyForAction("StopMacro");
+                        if (stopMacroKey != Keys.None && GetAsyncKeyState(stopMacroKey) < 0 && isMacroPlaying)
+                        {
+                            await Task.Delay(200);
+                            StopMacroPlayback();
+                            await Task.Delay(200);
+                        }
+                    }
+
+                    await Task.Delay(5);
                 }
-                await Task.Delay(5); // Esperar un corto período antes de verificar nuevamente
+                catch (Exception ex)
+                {
+                    LogError("Error in StartStopWorker", ex);
+                    await Task.Delay(100);
+                }
             }
         }
 
@@ -186,14 +264,12 @@ namespace AutClicker
             {
                 Invoke(new Action(() =>
                 {
-                    if (isPlaying) PlayStopLabel.Text = "Playing";
-                    else PlayStopLabel.Text = "Stopped";
+                    UpdateKeybindingLabels();
                 }));
             }
             else
             {
-                if (isPlaying) PlayStopLabel.Text = "Playing";
-                else PlayStopLabel.Text = "Stopped";
+                UpdateKeybindingLabels();
             }
         }
 
@@ -593,22 +669,14 @@ namespace AutClicker
 
         private async void PlayMacroBTN_Click(object sender, EventArgs e)
         {
-            if(MacrosListSelector.SelectedItem == null)
+            if (isMacroPlaying)
             {
-                MessageBox.Show("Please select a macro to play.");
-                return;
+                StopMacroPlayback();
             }
-
-            LoadMacro(MacrosListSelector.SelectedItem.ToString() + ".json");
-            if (recordedActions.Count == 0)
+            else
             {
-                MessageBox.Show("No macro to play");
-                return;
+                await StartMacroPlayback();
             }
-
-            await PlayRecordedMacro();
-
-            MessageBox.Show("Macro playback finished.");
         }
 
         private async Task PlayRecordedMacro()
@@ -637,6 +705,97 @@ namespace AutClicker
                 {
                     break;
                 }
+            }
+        }
+
+        private async Task StartMacroPlayback()
+        {
+            if (MacrosListSelector.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a macro to play.");
+                return;
+            }
+
+            LoadMacro(MacrosListSelector.SelectedItem.ToString() + ".json");
+
+            if (recordedActions.Count == 0)
+            {
+                MessageBox.Show("No macro to play");
+                return;
+            }
+
+            isMacroPlaying = true;
+            macroPlaybackCancellation = new CancellationTokenSource();
+            UpdateMacroPlaybackStatus(true);
+
+            try
+            {
+                await PlayRecordedMacroInfinite(macroPlaybackCancellation.Token);
+            }
+            catch (OperationCanceledException)
+            {
+                // Normal cancellation
+            }
+            finally
+            {
+                isMacroPlaying = false;
+                UpdateMacroPlaybackStatus(false);
+            }
+        }
+
+        private void StopMacroPlayback()
+        {
+            macroPlaybackCancellation?.Cancel();
+            isMacroPlaying = false;
+            UpdateMacroPlaybackStatus(false);
+        }
+
+        private void UpdateMacroPlaybackStatus(bool isPlaying)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() =>
+                {
+                    UpdateKeybindingLabels();
+                    MacroStatusLabel.ForeColor = isPlaying ? Color.Green : Color.Red;
+                }));
+            }
+            else
+            {
+                UpdateKeybindingLabels();
+                MacroStatusLabel.ForeColor = isPlaying ? Color.Green : Color.Red;
+            }
+        }
+
+        private async Task PlayRecordedMacroInfinite(CancellationToken cancellationToken)
+        {
+            while (!cancellationToken.IsCancellationRequested)
+            {
+                foreach (var action in recordedActions)
+                {
+                    if (cancellationToken.IsCancellationRequested)
+                        break;
+
+                    // Wait the interval before the action
+                    if (action.Interval > 0)
+                    {
+                        await Task.Delay((int)action.Interval, cancellationToken);
+                    }
+
+                    // Set cursor position
+                    Cursor.Position = new Point(action.X, action.Y);
+
+                    // Get mouse button codes
+                    uint[] mouseButtonCodes = GetMouseButtonCodes(action.MouseButton);
+
+                    // Simulate click
+                    mouse_event(mouseButtonCodes[0], (uint)action.X, (uint)action.Y, 0, 0);
+                    await Task.Delay(50, cancellationToken);
+                    mouse_event(mouseButtonCodes[1], (uint)action.X, (uint)action.Y, 0, 0);
+                }
+
+                // Small delay between loops
+                await Task.Delay(100, cancellationToken);
             }
         }
 
@@ -730,6 +889,85 @@ namespace AutClicker
         }
 
         #endregion
+
+        private void UpdateKeybindingLabels()
+        {
+            if (keyBindings == null) return;
+
+            try
+            {
+                var emergencyKey = keyBindings.GetKeyForAction("EmergencyStop");
+                var startKey = keyBindings.GetKeyForAction("StartClicking");
+                var stopKey = keyBindings.GetKeyForAction("StopClicking");
+                var startMacroKey = keyBindings.GetKeyForAction("StartMacro");
+                var stopMacroKey = keyBindings.GetKeyForAction("StopMacro");
+
+                PlayStopLabel.Text = isPlaying 
+                    ? $"Playing ({stopKey} to stop)" 
+                    : $"Stopped ({startKey} to start)";
+
+                MacroStatusLabel.Text = isMacroPlaying
+                    ? $"Macro: Playing ({stopMacroKey} to stop)"
+                    : $"Macro: Stopped ({startMacroKey} to play)";
+
+                MacroKeybindingsLabel.Text = $"Keybindings: {startMacroKey} = Play Macro | {stopMacroKey} = Stop Macro | " +
+                                            $"{startKey} = Start Clicks | {stopKey} = Stop Clicks | {emergencyKey} = Emergency Stop";
+            }
+            catch (Exception ex)
+            {
+                LogError("Error updating keybinding labels", ex);
+            }
+        }
+
+        private void LogError(string message, Exception ex = null)
+        {
+            try
+            {
+                string logDirectory = Path.Combine(Application.StartupPath, "Logs");
+                if (!Directory.Exists(logDirectory))
+                {
+                    Directory.CreateDirectory(logDirectory);
+                }
+
+                string logFile = Path.Combine(logDirectory, $"error_log_{DateTime.Now:yyyyMMdd}.txt");
+                string logEntry = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {message}";
+
+                if (ex != null)
+                {
+                    logEntry += $"\nException: {ex.GetType().Name}\nMessage: {ex.Message}\nStackTrace: {ex.StackTrace}";
+                }
+
+                logEntry += "\n" + new string('-', 80) + "\n";
+
+                File.AppendAllText(logFile, logEntry);
+            }
+            catch
+            {
+                // Logging failed, nothing we can do
+            }
+        }
+
+        private void ConfigureKeybindingsBTN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var keybindingsForm = new FormKeybindings())
+                {
+                    if (keybindingsForm.ShowDialog() == DialogResult.OK)
+                    {
+                        // Reload keybindings configuration
+                        keyBindings = KeyBindingConfiguration.Load(keyBindingsFilePath);
+                        UpdateKeybindingLabels();
+                        MessageBox.Show("Keybindings updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogError("Error opening keybindings configuration", ex);
+                MessageBox.Show($"Error opening keybindings configuration: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void ReloadMacroSelectorBTN_Click(object sender, EventArgs e)
         {
